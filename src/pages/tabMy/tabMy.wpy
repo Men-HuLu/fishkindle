@@ -1,0 +1,23 @@
+<style lang="less">
+</style>
+
+<template>
+  <view>
+    123
+  </view>
+</template>
+
+<script>
+import wepy from '@wepy/core';
+import api, { url } from '../../config/api';
+import { getTemp, getBase } from '../../config/storage';
+import util from '../../utils/util';
+import wxHelper from '../../utils/wxHelper';
+
+wepy.page({
+  data: {},
+  onLoad(e) {},
+  onShow() {},
+  methods: {}
+});
+</script>

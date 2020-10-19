@@ -1,0 +1,67 @@
+<style lang="less">
+@import './colorui/animation';
+@import './colorui/icon';
+@import './colorui/main';
+
+@import './styles/base';
+@import './styles/color';
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+</style>
+
+<script>
+import wepy from '@wepy/core';
+import promisify from '@wepy/use-promisify';
+import eventHub from './common/eventHub';
+import api, { url } from './config/api';
+import wxHelper from './utils/wxHelper';
+import util from './utils/util';
+
+wepy.app({
+  hooks: {
+    'before-setData': function(dirty) {
+      console.log('setData dirty: ', dirty);
+      return dirty;
+    }
+  },
+  globalData: {
+    userInfo: null
+  },
+
+  onLaunch() {
+    // this.testAsync();
+    // eventHub.$on('app-launch', (...args) => {
+    //   console.log('app-launch event emitted, the params are:');
+    //   console.log(args);
+    // });
+  },
+
+  methods: {}
+});
+</script>
+<config>
+{
+    pages: [
+      'pages/tabIndex/tabIndex',
+      'pages/tabMy/tabMy'
+    ],
+    window: {
+      backgroundTextStyle: 'dark',
+      navigationBarBackgroundColor: '#ec6867',
+      navigationStyle: 'custom',
+    },
+    networkTimeout: {
+      request: 15000,
+      connectSocket: 15000,
+      uploadFile: 15000,
+      downloadFile: 15000
+    }
+}
+</config>
