@@ -25,15 +25,12 @@ import wxHelper from './utils/wxHelper';
 import util from './utils/util';
 
 wepy.app({
-  hooks: {
-    'before-setData': function(dirty) {
-      console.log('setData dirty: ', dirty);
-      return dirty;
-    }
-  },
+  hooks: {},
 
   globalData: {
-    userInfo: null
+    key: '',
+    session: '',
+    userInfo: {}
   },
 
   async onLaunch() {
@@ -44,6 +41,7 @@ wepy.app({
       header.User = this.$options.globalData.key;
       return header;
     });
+    this.onLogin();
   },
 
   methods: {
@@ -60,12 +58,16 @@ wepy.app({
 {
     pages: [
       'pages/tabIndex/tabIndex',
+      'pages/tabSearch/tabSearch',
+      'pages/tabAdvice/tabAdvice',
       'pages/tabMy/tabMy'
     ],
     window: {
       backgroundTextStyle: 'dark',
       navigationBarBackgroundColor: '#ec6867',
-      navigationStyle: 'custom',
+      navigationBarTitleText: '鲤鱼搜书',
+      backgroundColor: '#eeeeee',
+      backgroundTextStyle: 'light'
     },
     tabBar: {
       color: '#707070',
@@ -78,6 +80,18 @@ wepy.app({
           selectedIconPath: './resources/tab/recommend_select.png',
           pagePath: 'pages/tabIndex/tabIndex',
           text: '首页'
+        },
+        {
+          iconPath: './resources/tab/recommend.png',
+          selectedIconPath: './resources/tab/recommend_select.png',
+          pagePath: 'pages/tabSearch/tabSearch',
+          text: '搜索'
+        },
+        {
+          iconPath: './resources/tab/recommend.png',
+          selectedIconPath: './resources/tab/recommend_select.png',
+          pagePath: 'pages/tabAdvice/tabAdvice',
+          text: '反馈'
         },
         {
           iconPath: './resources/tab/my.png',
